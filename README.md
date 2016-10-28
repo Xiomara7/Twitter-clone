@@ -1,5 +1,3 @@
-# Twitter-clone
-
 # Project 3 - *Twitter-client*
 
 **Twitter-client** is a basic twitter app to read and compose tweets from the [Twitter API](https://apps.twitter.com/).
