@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BDBOAuth1Manager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,6 +42,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        let requestToken = BDBOAuth1Credential(queryString: url.query)
+        
+        let twitterClient = BDBOAuth1SessionManager(
+            baseURL: NSURL(string: "https://api.twitter.com") as URL!,
+            consumerKey: "VtX3yrwwrJlJlYHJitnA2Vl92",
+            consumerSecret: "Z1xUeFcGFrqcQliFp4mj61WkWrJDewGLDA3SaKbnKNgVYraGRQ"
+        )
+        
+        twitterClient?.fetchAccessToken(
+            withPath: "oauth/access_token",
+            method: "POST",
+            requestToken: requestToken,
+            success: { accessToken in
+            
+                twitterClient?.get(
+                    "1.1/account/verify_credentials.json",
+                    parameters: nil,
+                    progress: nil,
+                    success: { (_, response) in
+                        
+                        let userDict = response as! NSDictionary
+                        let user = User(dictionary: userDict)
+                        
+                    }, failure: { (_, error) in
+                        print(error)
+                    }
+                )
+                
+                twitterClient?.get(
+                    "1.1/statuses/home_timeline.json",
+                    parameters: nil,
+                    progress: nil,
+                    success: { (_, response) in
+                        
+                        let dictionaries = response as! [NSDictionary]
+                        let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
+                        
+                        for tweet in tweets {
+                            print("tweet: \(tweet.text)")
+                        }
+                        
+                    }, failure: { (_, error) in
+                        print(error)
+                    }
+                )
+            
+            }, failure: { error in
+                print("error: \(error)")
+            }
+        )
+        
+        return true
+    }
 
 }
 

@@ -33,10 +33,12 @@ class LoginViewController: UIViewController {
         twitterClient?.fetchRequestToken(
             withPath: "oauth/request_token",
             method: "GET",
-            callbackURL: nil,
+            callbackURL: NSURL(string: "twitterdemo://oauth") as URL!,
             scope: nil,
             success: { (requestToken) -> Void in
-                print("token")
+                let url = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken!.token!)")!
+                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+                
             }, failure: { error in
                 print(error)
             }
