@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,55 +72,48 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LKT-SX-WKA">
                                                     <frame key="frameInset" minX="8" minY="24" width="50" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="WBr-yu-dwM"/>
-                                                        <constraint firstAttribute="width" constant="50" id="ogY-rW-bNf"/>
+                                                        <constraint firstAttribute="width" constant="50" id="0Wh-F0-DeY"/>
+                                                        <constraint firstAttribute="height" constant="50" id="Ugt-3U-AZ0"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Xiomara Figueroa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXx-8R-wpJ">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="134" id="wDg-dY-2jJ"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Xiomara Figueroa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXx-8R-wpJ">
+                                                    <frame key="frameInset" minX="66" minY="24" width="134" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@_xiomara7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNF-4t-Cop">
+                                                    <frame key="frameInset" minX="212" minY="24" width="77.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="14h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hep-Q0-4f8">
+                                                    <frame key="frameInset" minX="319.5" minY="24.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tweet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oyw-Dt-dwy">
-                                                    <frame key="frameInset" minX="66" minY="54" width="301" height="57"/>
+                                                    <frame key="frameInset" minX="66" minY="46" width="301" height="57"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@_xiomara7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNF-4t-Cop">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="14h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hep-Q0-4f8">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="42" id="Sz2-X4-Hhu"/>
-                                                        <constraint firstAttribute="height" constant="21" id="zyJ-Oc-nAN"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="fXx-8R-wpJ" firstAttribute="leading" secondItem="Oyw-Dt-dwy" secondAttribute="leading" id="9V5-aH-YlV"/>
-                                                <constraint firstItem="LKT-SX-WKA" firstAttribute="leading" secondItem="B49-LY-Lmg" secondAttribute="leadingMargin" id="9eX-DU-cUk"/>
-                                                <constraint firstItem="Hep-Q0-4f8" firstAttribute="trailing" secondItem="Oyw-Dt-dwy" secondAttribute="trailing" id="Cdj-DP-18q"/>
-                                                <constraint firstItem="Oyw-Dt-dwy" firstAttribute="trailing" secondItem="B49-LY-Lmg" secondAttribute="trailingMargin" id="FRm-Az-ogu"/>
-                                                <constraint firstItem="Oyw-Dt-dwy" firstAttribute="top" secondItem="Hep-Q0-4f8" secondAttribute="bottom" constant="3" id="HmI-FC-JCa"/>
-                                                <constraint firstItem="LKT-SX-WKA" firstAttribute="centerY" secondItem="B49-LY-Lmg" secondAttribute="centerY" id="Jyq-yg-EtO"/>
-                                                <constraint firstItem="Hep-Q0-4f8" firstAttribute="firstBaseline" secondItem="xNF-4t-Cop" secondAttribute="firstBaseline" id="SeC-hB-qPl"/>
-                                                <constraint firstItem="Oyw-Dt-dwy" firstAttribute="leading" secondItem="LKT-SX-WKA" secondAttribute="trailing" constant="8" id="dnj-zc-9LG"/>
-                                                <constraint firstItem="fXx-8R-wpJ" firstAttribute="baseline" secondItem="xNF-4t-Cop" secondAttribute="baseline" id="ehd-Ly-NLZ"/>
-                                                <constraint firstItem="xNF-4t-Cop" firstAttribute="leading" secondItem="fXx-8R-wpJ" secondAttribute="trailing" constant="8" symbolic="YES" id="hwC-uq-mAv"/>
-                                                <constraint firstItem="fXx-8R-wpJ" firstAttribute="top" secondItem="LKT-SX-WKA" secondAttribute="top" id="mDM-vk-jHU"/>
-                                                <constraint firstItem="Hep-Q0-4f8" firstAttribute="baseline" secondItem="xNF-4t-Cop" secondAttribute="baseline" id="mxn-F9-ZJZ"/>
-                                                <constraint firstItem="Hep-Q0-4f8" firstAttribute="leading" secondItem="xNF-4t-Cop" secondAttribute="trailing" constant="12" id="rPh-II-rbs"/>
-                                                <constraint firstItem="fXx-8R-wpJ" firstAttribute="firstBaseline" secondItem="xNF-4t-Cop" secondAttribute="firstBaseline" id="sv0-ra-M6l"/>
-                                                <constraint firstAttribute="bottom" secondItem="Oyw-Dt-dwy" secondAttribute="bottom" constant="5" id="wga-tl-qhs"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Hep-Q0-4f8" secondAttribute="trailing" constant="5" id="0eI-Ge-omZ"/>
+                                                <constraint firstItem="Oyw-Dt-dwy" firstAttribute="leading" secondItem="LKT-SX-WKA" secondAttribute="trailing" constant="8" id="2pg-4A-7YF"/>
+                                                <constraint firstItem="Hep-Q0-4f8" firstAttribute="top" secondItem="xNF-4t-Cop" secondAttribute="top" id="6ea-g4-Zwl"/>
+                                                <constraint firstItem="LKT-SX-WKA" firstAttribute="leading" secondItem="B49-LY-Lmg" secondAttribute="leadingMargin" constant="5" id="JE6-wC-rev"/>
+                                                <constraint firstItem="Oyw-Dt-dwy" firstAttribute="top" secondItem="Hep-Q0-4f8" secondAttribute="bottom" constant="0.5" id="MBc-ru-MdJ"/>
+                                                <constraint firstItem="fXx-8R-wpJ" firstAttribute="top" secondItem="LKT-SX-WKA" secondAttribute="top" id="XDg-Nu-Xqs"/>
+                                                <constraint firstItem="xNF-4t-Cop" firstAttribute="top" secondItem="fXx-8R-wpJ" secondAttribute="top" id="hTE-gz-vNG"/>
+                                                <constraint firstItem="xNF-4t-Cop" firstAttribute="leading" secondItem="fXx-8R-wpJ" secondAttribute="trailing" constant="5" id="hm4-RP-ffh"/>
+                                                <constraint firstItem="Oyw-Dt-dwy" firstAttribute="trailing" secondItem="B49-LY-Lmg" secondAttribute="trailingMargin" constant="5" id="kCP-ft-zks"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Oyw-Dt-dwy" secondAttribute="bottom" constant="7" id="kYm-2D-gtg"/>
+                                                <constraint firstItem="LKT-SX-WKA" firstAttribute="top" secondItem="B49-LY-Lmg" secondAttribute="topMargin" constant="16" id="kx0-nZ-ZUg"/>
+                                                <constraint firstItem="fXx-8R-wpJ" firstAttribute="leading" secondItem="LKT-SX-WKA" secondAttribute="trailing" constant="8" id="z9A-3L-J1v"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

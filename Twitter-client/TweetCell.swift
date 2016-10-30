@@ -30,7 +30,7 @@ class TweetCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        self.layer.cornerRadius = 10.0
-        self.layer.masksToBounds = true
+        profileImageView.layer.cornerRadius = 5.0
+        profileImageView.layer.masksToBounds = true
     }
 }
