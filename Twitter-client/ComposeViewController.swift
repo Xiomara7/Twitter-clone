@@ -19,6 +19,10 @@ class ComposeViewController: UIViewController {
     
     var currentUser: User!
     
+    var isReply: Bool = false
+    var tweetID: Int?
+    var replyTo: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +41,11 @@ class ComposeViewController: UIViewController {
         })
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("reply: \(isReply)")
+        print("tweetID: \(tweetID)")
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -50,14 +59,26 @@ class ComposeViewController: UIViewController {
     //MARK: - Selector Methods
     @IBAction func onTweetButton(_ sender: AnyObject) {
         if let text = tweetTextField.text {
-            TwitterClient.sharedInstance?.composeTweet(
-            tweet: text,
-            success: { newTweet in
-                self.dismiss(animated: true, completion: nil)
-            
-            }, failure: { (error) in
-                // HANDLE ERROR
-            })
+            if isReply {
+                TwitterClient.sharedInstance?.replyTweet(
+                tweet: text,
+                tweetID: tweetID!,
+                success: { newTweet in
+                    self.dismiss(animated: true, completion: nil)
+                    
+                }, failure: { error in
+                    print("error: \(error.localizedDescription)")
+                })
+            } else {
+                TwitterClient.sharedInstance?.composeTweet(
+                tweet: text,
+                success: { newTweet in
+                    self.dismiss(animated: true, completion: nil)
+                    
+                }, failure: { (error) in
+                    print("error: \(error.localizedDescription)")
+                })
+            }
         }
     }
 
@@ -73,6 +94,10 @@ class ComposeViewController: UIViewController {
             if let profileURL = currentUser.profileURL {
                 profileImageView.setImageWith(profileURL as URL)
             }
+        }
+        
+        if let replyTo = replyTo {
+            tweetTextField.text = "@\(replyTo) "
         }
     }
 }

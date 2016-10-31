@@ -10,6 +10,8 @@ import UIKit
 
 class TweetsViewController: UIViewController {
 
+    static let sharedInstance = TweetsViewController()
+    
     @IBOutlet weak var tableView: UITableView!
     
     var tweets: [Tweet]!
@@ -30,6 +32,12 @@ class TweetsViewController: UIViewController {
         )
         
         tableView.addSubview(refreshControl)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.getHomeTimeLine()
     }
 
     override func didReceiveMemoryWarning() {

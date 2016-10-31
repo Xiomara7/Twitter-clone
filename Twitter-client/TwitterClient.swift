@@ -75,6 +75,7 @@ class TwitterClient: BDBOAuth1SessionManager {
              parameters: ["status":tweet],
              progress: nil,
              success: { (_, response) in
+                print("response for new tweet: \(response)")
                 let tweet = Tweet(dictionary: response as! NSDictionary)
                 success(tweet)
             }) { (task, error) in
@@ -83,8 +84,25 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func replyTweet(tweet: String, tweetID: Int, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
+        print("reply twetID: \(tweetID)")
+        
         post("1.1/statuses/update.json",
              parameters: ["status":tweet, "in_reply_to_status_id":tweetID],
+             progress: nil,
+             success: { (_, response) in
+                
+                print("reply response: \(response)")
+                let tweet = Tweet(dictionary: response as! NSDictionary)
+                success(tweet)
+                
+        }) { (task, error) in
+            failure(error)
+        }
+    }
+    
+    func retweet(tweetID: Int, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
+        post("1.1/statuses/retweet/:\(tweetID).json",
+             parameters: nil,
              progress: nil,
              success: { (_, response) in
                 let tweet = Tweet(dictionary: response as! NSDictionary)
@@ -94,25 +112,15 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
     }
     
-    func retweet(tweetID: Int) {
-        post("1.1/statuses/retweet/:\(tweetID).json",
-             parameters: nil,
-             progress: nil,
-             success: { (_, response) in
-                print("retweeted")
-        }) { (task, error) in
-            print(error.localizedDescription)
-        }
-    }
-    
-    func favorite(tweetID: Int) {
+    func favorite(tweetID: Int, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
         post("1.1/favorites/create.json?id=\(tweetID)",
             parameters: nil,
             progress: nil,
             success: { (_, response) in
-                print("favorited")
+                let tweet = Tweet(dictionary: response as! NSDictionary)
+                success(tweet)
         }) { (task, error) in
-            print(error.localizedDescription)
+            failure(error)
         }
     }
     
