@@ -10,7 +10,7 @@ import UIKit
 import BDBOAuth1Manager
 
 class TwitterClient: BDBOAuth1SessionManager {
-
+    
     static let sharedInstance = TwitterClient(
         baseURL: NSURL(string: "https://api.twitter.com") as URL!,
         consumerKey: "VtX3yrwwrJlJlYHJitnA2Vl92",
@@ -82,6 +82,18 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
     }
     
+    func replyTweet(tweet: String, tweetID: Int, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
+        post("1.1/statuses/update.json",
+             parameters: ["status":tweet, "in_reply_to_status_id":tweetID],
+             progress: nil,
+             success: { (_, response) in
+                let tweet = Tweet(dictionary: response as! NSDictionary)
+                success(tweet)
+        }) { (task, error) in
+            failure(error)
+        }
+    }
+    
     func retweet(tweetID: Int) {
         post("1.1/statuses/retweet/:\(tweetID).json",
              parameters: nil,
@@ -112,10 +124,22 @@ class TwitterClient: BDBOAuth1SessionManager {
             method: "POST",
             requestToken: requestToken,
             success: { accessToken in
-                self.loginSuccess?()
-                
+                self.currentAccount(success: { user in
+                    User.currentUser = user
+                    self.loginSuccess?()
+                    
+                }, failure: { error in
+                    self.loginFailure?(error)
+                })
         }) { (error) -> Void in
             self.loginFailure?(error!)
         }
+    }
+    
+    func logout() {
+        User.currentUser = nil
+        deauthorize()
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: User.userDidLogoutNotification), object: nil)
     }
 }

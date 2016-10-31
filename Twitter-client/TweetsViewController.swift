@@ -46,6 +46,10 @@ class TweetsViewController: UIViewController {
         }
     }
     
+    @IBAction func onSignOutButton(_ sender: AnyObject) {
+        TwitterClient.sharedInstance?.logout()
+        
+    }
     // MARK: - Selector Methods
     func refreshAction(sender: AnyObject) {
         self.getHomeTimeLine()

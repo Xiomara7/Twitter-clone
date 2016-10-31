@@ -30,6 +30,7 @@
 		0A83BC1C1DC69841003DC3CF /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		0A83BC1E1DC6BBB1003DC3CF /* TweetDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetDetailsViewController.swift; sourceTree = "<group>"; };
 		0A83BC201DC6C56F003DC3CF /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		0A83BC221DC7E39D003DC3CF /* Twitter-client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Twitter-client.entitlements"; sourceTree = "<group>"; };
 		0A9D95111DC404A80048E114 /* Twitter-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twitter-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A9D95141DC404A80048E114 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A9D95191DC404A80048E114 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -100,6 +101,7 @@
 		0A9D95131DC404A80048E114 /* Twitter-client */ = {
 			isa = PBXGroup;
 			children = (
+				0A83BC221DC7E39D003DC3CF /* Twitter-client.entitlements */,
 				0A83BC121DC53006003DC3CF /* API */,
 				0A83BC111DC53000003DC3CF /* Models */,
 				0A9D95261DC4741F0048E114 /* View Controllers */,
@@ -176,7 +178,13 @@
 				TargetAttributes = {
 					0A9D95101DC404A80048E114 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = DV7HA88ZD7;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -394,6 +402,8 @@
 			baseConfigurationReference = 369F6E9B7B8D8EE41F03D717 /* Pods-Twitter-client.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Twitter-client/Twitter-client.entitlements";
+				DEVELOPMENT_TEAM = DV7HA88ZD7;
 				INFOPLIST_FILE = "Twitter-client/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Xiomara.Twitter-client";
@@ -407,6 +417,8 @@
 			baseConfigurationReference = B034244D9FDDD67DF0DB10B8 /* Pods-Twitter-client.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Twitter-client/Twitter-client.entitlements";
+				DEVELOPMENT_TEAM = DV7HA88ZD7;
 				INFOPLIST_FILE = "Twitter-client/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Xiomara.Twitter-client";

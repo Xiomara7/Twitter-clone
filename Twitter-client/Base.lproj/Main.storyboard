@@ -52,12 +52,12 @@
         <!--Home-->
         <scene sceneID="ACo-M9-wsy">
             <objects>
-                <viewController id="kYk-95-Aop" customClass="TweetsViewController" customModule="Twitter_client" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TweetsVC" id="kYk-95-Aop" customClass="TweetsViewController" customModule="Twitter_client" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gNY-aI-ZHA"/>
                         <viewControllerLayoutGuide type="bottom" id="PSi-iE-Siw"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zPn-dW-sx0">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="zPn-dW-sx0">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -145,6 +145,9 @@
                     <navigationItem key="navigationItem" title="Home" id="NNA-sM-VyM">
                         <barButtonItem key="leftBarButtonItem" title="Sign Out" id="jmo-Th-mLk">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="onSignOutButton:" destination="kYk-95-Aop" id="hDx-mL-MVf"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" id="CLh-Vz-2m6">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -247,6 +250,7 @@
                                 <state key="normal" image="Reply"/>
                                 <connections>
                                     <action selector="onReplyButton:" destination="gxX-3f-Uq6" eventType="touchUpInside" id="Q2r-iD-SEs"/>
+                                    <segue destination="rwD-SU-W8M" kind="presentation" id="mZr-T4-GDH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YoY-ZE-Iab">
@@ -451,5 +455,8 @@
         <image name="Star" width="29" height="28"/>
         <image name="StarSelected" width="29" height="28"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="smx-cv-K7f"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
