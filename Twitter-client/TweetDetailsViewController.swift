@@ -18,25 +18,45 @@ class TweetDetailsViewController: UIViewController {
     @IBOutlet weak var retweetsCount: UILabel!
     @IBOutlet weak var favoritesCount: UILabel!
     
+    @IBOutlet weak var retweetImage: UIButton!
+    @IBOutlet weak var favoriteImage: UIButton!
+    
     var tweet: Tweet!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         username.text = tweet.user?.name
         tweetText.text = tweet.text
+    
         retweetsCount.text = "\(tweet.retweetCount)"
         favoritesCount.text = "\(tweet.favoritesCount)"
         
-        print("xio: \(tweet.retweetCount)")
-        print("xio: \(tweet.favoritesCount)")
+        if let favorited = tweet.favorited {
+            if favorited {
+                favoritesCount.text = "\(tweet.favoritesCount + 1)"
+                favoriteImage.isSelected = true
+            }
+        }
+        
+        if let retweeted = tweet.retweeted {
+            if retweeted {
+                retweetsCount.text = "\(tweet.retweetCount + 1)"
+                retweetImage.isSelected = true
+            }
+        }
         
         if let screenname = tweet.user?.screenName {
             screenName.text = "@\(screenname)"
         }
         
         if let time = tweet.timestamp {
-            timestamp.text = "\(time)"
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy HH:mm a"
+            formatter.amSymbol = "AM"
+            formatter.pmSymbol = "PM"
+            
+            timestamp.text = formatter.string(from: time as Date)
         }
         
         if let profileURL = tweet.user?.profileURL {
@@ -50,4 +70,24 @@ class TweetDetailsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func onReplyButton(_ sender: AnyObject) {
+    }
+    
+    @IBAction func onRetweetButton(_ sender: AnyObject) {
+        if !retweetImage.isSelected {
+            TwitterClient.sharedInstance?.retweet(tweetID: tweet.id!)
+            retweetsCount.text = "\(tweet.retweetCount + 1)"
+            retweetImage.isSelected = true
+        }
+    }
+    
+    @IBAction func onStarButton(_ sender: AnyObject) {
+        if !favoriteImage.isSelected {
+            TwitterClient.sharedInstance?.favorite(tweetID: tweet.id!)
+            favoritesCount.text = "\(tweet.favoritesCount + 1)"
+            favoriteImage.isSelected = true
+        }
+    }
+    
 }

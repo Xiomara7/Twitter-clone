@@ -47,8 +47,6 @@ class TwitterClient: BDBOAuth1SessionManager {
             parameters: nil,
             progress: nil,
             success: { (_, response) in
-                print("response: \(response)")
-                
                 let dictionaries = response as! [NSDictionary]
                 let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
                 success(tweets)
@@ -81,6 +79,28 @@ class TwitterClient: BDBOAuth1SessionManager {
                 success(tweet)
             }) { (task, error) in
                 failure(error)
+        }
+    }
+    
+    func retweet(tweetID: Int) {
+        post("1.1/statuses/retweet/:\(tweetID).json",
+             parameters: nil,
+             progress: nil,
+             success: { (_, response) in
+                print("retweeted")
+        }) { (task, error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func favorite(tweetID: Int) {
+        post("1.1/favorites/create.json?id=\(tweetID)",
+            parameters: nil,
+            progress: nil,
+            success: { (_, response) in
+                print("favorited")
+        }) { (task, error) in
+            print(error.localizedDescription)
         }
     }
     
