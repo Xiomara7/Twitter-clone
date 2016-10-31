@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if User.currentUser != nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "TweetsVC")
+            let vc = storyboard.instantiateViewController(withIdentifier: "TweetsNC")
             
             window?.rootViewController = vc
         }

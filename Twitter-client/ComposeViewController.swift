@@ -10,11 +10,12 @@ import UIKit
 
 class ComposeViewController: UIViewController {
 
-    
-    @IBOutlet weak var tweetTextField: UITextField!
+    @IBOutlet weak var tweetTextField: UITextView!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var screenName: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
+    
+    @IBOutlet weak var tweetCountdown: UILabel!
     
     var currentUser: User!
     
@@ -23,6 +24,8 @@ class ComposeViewController: UIViewController {
 
         profileImageView.layer.cornerRadius = 5.0
         profileImageView.layer.masksToBounds = true
+        
+        tweetTextField.delegate = self
         
         TwitterClient.sharedInstance?.currentAccount(
         success: { user in
@@ -44,18 +47,17 @@ class ComposeViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    //MARK: - Selector Methods
     @IBAction func onTweetButton(_ sender: AnyObject) {
         if let text = tweetTextField.text {
             TwitterClient.sharedInstance?.composeTweet(
-                tweet: text,
-                success: { newTweet in
-                    print("new tweet: \(newTweet)")
-                    self.dismiss(animated: true, completion: nil)
+            tweet: text,
+            success: { newTweet in
+                self.dismiss(animated: true, completion: nil)
             
-                }, failure: { (error) in
-                    // HANDLE ERROR
-                }
-            )
+            }, failure: { (error) in
+                // HANDLE ERROR
+            })
         }
     }
 
@@ -74,3 +76,21 @@ class ComposeViewController: UIViewController {
         }
     }
 }
+
+extension ComposeViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        if 140 - (tweetTextField.text?.characters.count)! < 0 {
+            tweetCountdown.textColor = UIColor.red
+        } else {
+            tweetCountdown.textColor = UIColor.gray
+        }
+        
+        tweetCountdown.reloadInputViews()
+        tweetCountdown.text = "\(140 - (tweetTextField.text?.characters.count)!)"
+    }
+    
+}
+
+
+
+

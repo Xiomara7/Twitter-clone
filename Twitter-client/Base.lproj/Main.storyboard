@@ -344,7 +344,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Xiomara Figueroa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Xr-LA-06F">
-                                <frame key="frameInset" minX="74" minY="79" width="285" height="21"/>
+                                <frame key="frameInset" minX="74" minY="79" width="226" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -355,30 +355,34 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TvP-hS-L3p">
-                                <frame key="frameInset" minX="16" minY="144" width="343" height="30"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohr-ZW-RRH">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVl-Y4-731">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="144" id="RJL-X2-u2b"/>
+                                    <constraint firstAttribute="height" constant="128" id="YDm-LX-GPN"/>
                                 </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES" address="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ii4-UR-00P" firstAttribute="leading" secondItem="Wck-Pw-o1R" secondAttribute="leadingMargin" id="1og-mP-3dr"/>
                             <constraint firstItem="5Xr-LA-06F" firstAttribute="leading" secondItem="ii4-UR-00P" secondAttribute="trailing" constant="8" id="8H9-8H-Avf"/>
-                            <constraint firstItem="TvP-hS-L3p" firstAttribute="trailing" secondItem="Wck-Pw-o1R" secondAttribute="trailingMargin" id="Ac1-HL-StB"/>
+                            <constraint firstItem="ZVl-Y4-731" firstAttribute="leading" secondItem="Wck-Pw-o1R" secondAttribute="leadingMargin" id="CMA-Qa-mn0"/>
                             <constraint firstItem="Dqk-cW-UXz" firstAttribute="trailing" secondItem="Wck-Pw-o1R" secondAttribute="trailingMargin" id="HbT-J4-hBl"/>
                             <constraint firstItem="Dqk-cW-UXz" firstAttribute="top" secondItem="5Xr-LA-06F" secondAttribute="bottom" constant="2" id="I4m-ON-jki"/>
                             <constraint firstItem="5Xr-LA-06F" firstAttribute="top" secondItem="ii4-UR-00P" secondAttribute="top" id="JyI-Dh-r3m"/>
-                            <constraint firstItem="5Xr-LA-06F" firstAttribute="trailing" secondItem="Wck-Pw-o1R" secondAttribute="trailingMargin" id="K8L-b1-tMJ"/>
+                            <constraint firstItem="Ohr-ZW-RRH" firstAttribute="trailing" secondItem="Wck-Pw-o1R" secondAttribute="trailingMargin" id="Q6t-aD-qk5"/>
+                            <constraint firstItem="ZVl-Y4-731" firstAttribute="top" secondItem="ii4-UR-00P" secondAttribute="bottom" constant="23" id="SMt-8c-c4X"/>
                             <constraint firstItem="Dqk-cW-UXz" firstAttribute="leading" secondItem="ii4-UR-00P" secondAttribute="trailing" constant="8" id="U1t-CS-Q6v"/>
+                            <constraint firstItem="ZVl-Y4-731" firstAttribute="trailing" secondItem="Wck-Pw-o1R" secondAttribute="trailingMargin" id="Wav-QK-Eo3"/>
+                            <constraint firstItem="Ohr-ZW-RRH" firstAttribute="centerY" secondItem="5Xr-LA-06F" secondAttribute="centerY" id="dwZ-q4-xo2"/>
                             <constraint firstItem="ii4-UR-00P" firstAttribute="top" secondItem="XbR-y9-BYX" secondAttribute="bottom" constant="15" id="hPV-Bp-dqm"/>
-                            <constraint firstItem="TvP-hS-L3p" firstAttribute="leading" secondItem="Wck-Pw-o1R" secondAttribute="leadingMargin" id="lSi-UL-jwd"/>
-                            <constraint firstItem="TvP-hS-L3p" firstAttribute="top" secondItem="ii4-UR-00P" secondAttribute="bottom" constant="15" id="tsc-fc-t6H"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Jy7-dC-5jd">
@@ -398,20 +402,21 @@
                     <connections>
                         <outlet property="profileImageView" destination="ii4-UR-00P" id="8l3-P4-Mn0"/>
                         <outlet property="screenName" destination="Dqk-cW-UXz" id="SlP-BV-uzM"/>
-                        <outlet property="tweetTextField" destination="TvP-hS-L3p" id="9iL-ag-t3c"/>
+                        <outlet property="tweetCountdown" destination="Ohr-ZW-RRH" id="XEj-L1-dLd"/>
+                        <outlet property="tweetTextField" destination="ZVl-Y4-731" id="4Rl-3a-Jp4"/>
                         <outlet property="username" destination="5Xr-LA-06F" id="Wkt-YO-HGs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QxH-xP-WmY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481" y="871"/>
+            <point key="canvasLocation" x="1480.8" y="870.31484257871068"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NkJ-hQ-uCg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w5j-gR-0Up" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TweetsNC" automaticallyAdjustsScrollViewInsets="NO" id="w5j-gR-0Up" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="tOL-hL-pyL">
+                    <navigationBar key="navigationBar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" id="tOL-hL-pyL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
