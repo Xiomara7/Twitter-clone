@@ -72,6 +72,18 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    func composeTweet(tweet: String, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
+        post("1.1/statuses/update.json",
+             parameters: ["status":tweet],
+             progress: nil,
+             success: { (_, response) in
+                let tweet = Tweet(dictionary: response as! NSDictionary)
+                success(tweet)
+            }) { (task, error) in
+                failure(error)
+        }
+    }
+    
     func handleOpenURL(url: URL) {
         let requestToken = BDBOAuth1Credential(queryString: url.query)
         

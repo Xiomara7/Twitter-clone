@@ -29,11 +29,21 @@ class TweetsViewController: UIViewController {
             for: .allEvents
         )
         
-        tableView.tableHeaderView = refreshControl
+        tableView.addSubview(refreshControl)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cell = sender as? UITableViewCell {
+            let indexPath = tableView.indexPath(for: cell)!
+            let tweet = tweets[indexPath.row]
+            
+            let detailsViewController = segue.destination as! TweetDetailsViewController
+            detailsViewController.tweet = tweet
+        }
     }
     
     // MARK: - Selector Methods
@@ -70,7 +80,10 @@ extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
         let tweet = tweets[indexPath.row]
         cell.tweetText.text = tweet.text
         cell.username.text = tweet.user?.name
-        cell.screenName.text = tweet.user?.screenName
+        
+        if let screenName = tweet.user?.screenName {
+            cell.screenName.text = "@\(screenName)"
+        }
         
         if let profileURL = tweet.user?.profileURL {
             cell.profileImageView.setImageWith(profileURL as URL)
@@ -79,4 +92,7 @@ extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
