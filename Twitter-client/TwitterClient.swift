@@ -56,6 +56,20 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
     }
     
+    func reloadHome(tweetID: Int, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        get("1.1/statuses/home_timeline.json",
+            parameters: ["max_id":tweetID],
+            progress: nil,
+            success: { (_, response) in
+                let dictionaries = response as! [NSDictionary]
+                let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
+                success(tweets)
+                
+        }) { (_, error) in
+            failure(error)
+        }
+    }
+    
     func currentAccount(success: @escaping (User) -> (), failure: @escaping (Error) -> ()) {
         get("1.1/account/verify_credentials.json",
             parameters: nil,

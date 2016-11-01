@@ -16,6 +16,7 @@ class TweetsViewController: UIViewController {
     
     var tweets: [Tweet]!
     var refreshControl: UIRefreshControl!
+    var isMoreDataLoading: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +77,7 @@ class TweetsViewController: UIViewController {
     }
 }
 
+// MARK: - TableView Methods
 extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -108,3 +110,38 @@ extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
+
+// MARK: - ScrollView Methods
+extension TweetsViewController: UIScrollViewDelegate {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !isMoreDataLoading {
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+                isMoreDataLoading = true
+                
+                TwitterClient.sharedInstance?.reloadHome(
+                tweetID: tweets.last!.id!,
+                success: { tweets in
+                    for tweet in tweets {
+                        self.tweets.append(tweet)
+                    }
+                    
+                    self.isMoreDataLoading = false
+                    self.tableView.reloadData()
+                    
+                }, failure: { error in
+                    print(error.localizedDescription)
+                })
+            }
+        }
+    }
+}
+
+
+
+
+
