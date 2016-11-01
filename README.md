@@ -33,6 +33,24 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+* User can sign in using OAuth login flow.
 
-## Notes
+![login](https://cloud.githubusercontent.com/assets/3449724/19876061/8c0d9ec4-9f8f-11e6-921a-1b0e0100b4ef.gif)
+
+* User can view last 20 tweets from their home timeline.
+
+![feed](https://cloud.githubusercontent.com/assets/3449724/19876065/9092967a-9f8f-11e6-9782-85871fc0b72b.gif)
+
+* User can compose a new tweet by tapping on a compose button.
+
+![compose](https://cloud.githubusercontent.com/assets/3449724/19876068/959be054-9f8f-11e6-8713-bbc47fe480c8.gif)
+
+* User can pull to refresh.
+
+![refresh](https://cloud.githubusercontent.com/assets/3449724/19876186/b96f5866-9f90-11e6-9f0c-879fac3a1092.gif)
+
+* The current signed in user will be persisted across restarts and user can load more tweets.
+
+![scroll](https://cloud.githubusercontent.com/assets/3449724/19876182/b826113e-9f90-11e6-9f50-d47ca92ad2a6.gif)
+
+GIFs created with [LiceCap](http://www.cockos.com/licecap/).
